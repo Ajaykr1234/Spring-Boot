@@ -1,0 +1,5 @@
+package org.jsp.empdept.dao;
+
+public class MerchantDao {
+
+}

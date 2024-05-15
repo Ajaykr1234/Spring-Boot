@@ -1,0 +1,8 @@
+package org.jsp.empdept.repository;
+
+import org.jsp.empdept.dto.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+}

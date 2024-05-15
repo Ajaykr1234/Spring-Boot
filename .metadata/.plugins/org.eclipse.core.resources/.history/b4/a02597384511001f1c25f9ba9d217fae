@@ -1,0 +1,5 @@
+package org.jsp.empdept.exception;
+
+public class BootExceptionHandler {
+
+}

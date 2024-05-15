@@ -1,0 +1,24 @@
+package org.jsp.empdept.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+public class Employee {
+
+	private int id;
+
+	private String name, designation, password;
+
+	private double sal;
+
+	private long phone;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="department_id")
+	@JsonIgnore
+	private Department department;
+
+}

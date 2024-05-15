@@ -1,0 +1,17 @@
+package org.jsp.empdept.service;
+
+import org.jsp.empdept.dao.DepartmentDao;
+import org.jsp.empdept.dao.EmployeeDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	private EmployeeDao employeeDao;
+	
+	@Autowired
+	private DepartmentDao departmentDao;
+
+}

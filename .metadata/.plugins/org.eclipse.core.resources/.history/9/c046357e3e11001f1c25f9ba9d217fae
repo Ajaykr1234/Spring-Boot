@@ -1,0 +1,23 @@
+package org.jsp.empdept.dto;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+public class Department {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(nullable = false)
+	private String name , location;
+	
+	@OneToMany
+	private List<Employee> employees;
+
+}

@@ -1,0 +1,21 @@
+package org.jsp.empdept.dao;
+
+
+import org.jsp.empdept.dto.Employee;
+import org.jsp.empdept.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class EmployeeDao {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	
+	
+	public  Employee saveEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+
+}

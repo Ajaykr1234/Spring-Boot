@@ -1,0 +1,10 @@
+package org.jsp.empdept.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MerchantDao {
+	
+	private 
+
+}

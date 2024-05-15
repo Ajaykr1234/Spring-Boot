@@ -1,0 +1,11 @@
+package org.jsp.empdept.dao;
+
+import org.jsp.empdept.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class EmployeeDao {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+}

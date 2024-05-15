@@ -1,0 +1,27 @@
+package org.jsp.empdept.service;
+
+import org.jsp.empdept.dao.DepartmentDao;
+import org.jsp.empdept.dto.Department;
+import org.jsp.empdept.dto.ResponseStructure;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class DepartmentService {
+	
+	@Autowired
+	private DepartmentDao departmentDao;
+	
+	public ResponseEntity<ResponseStructure<Department>> saveDepartment(Department department) {
+		ResponseStructure<Department> structure = new ResponseStructure<>();
+		
+		structure.setData(departmentDao.saveDepartment(department));
+		structure.setStatusCode(HttpStatus.CREATED.value());
+		structure.setMessage("Department Added Successfull");
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(structure);
+	}
+
+}

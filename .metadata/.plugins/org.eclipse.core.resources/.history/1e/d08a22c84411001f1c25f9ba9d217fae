@@ -1,0 +1,51 @@
+package org.jsp.empdept.service;
+
+import java.util.Optional;
+
+import org.jsp.empdept.dao.DepartmentDao;
+import org.jsp.empdept.dao.EmployeeDao;
+import org.jsp.empdept.dto.Department;
+import org.jsp.empdept.dto.Employee;
+import org.jsp.empdept.dto.ResponseStructure;
+import org.jsp.empdept.exception.EmployeeNotFound;
+import org.jsp.springbootapp.exception.MerchantNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	private EmployeeDao employeeDao;
+	
+	@Autowired
+	private DepartmentDao departmentDao;
+	
+	public  ResponseEntity<ResponseStructure<Employee>> saveEmployee(Employee employee, int dept_id) {
+		
+		Optional<Department> recDepartment = departmentDao.FindById(dept_id);
+		
+		if(recDepartment.isPresent()) {
+			Department department = recDepartment.get();
+			
+			employee.setDepartment(department);
+			
+			department.getEmployees().add(employee);
+			
+			ResponseStructure<Employee> structure = new ResponseStructure<>();
+			structure.setData(employeeDao.saveEmployee(employee));
+			departmentDao.saveDepartment(department);
+			structure.setMessage("Employee save sucessfully");
+			structure.setStatusCode(HttpStatus.CREATED.value());
+			return ResponseEntity.status(HttpStatus.CREATED.value()).body(structure);
+		}
+		throw new EmployeeNotFound("Can not save Employee Becouse Department id is Worng!");
+
+		}
+		
+	}
+
+	
+

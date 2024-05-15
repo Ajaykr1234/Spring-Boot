@@ -1,0 +1,18 @@
+package org.jsp.springbootapp.dto;
+
+@Entity
+public class Merchant {
+	
+	private int id ;
+	
+	
+	private String name;
+	
+	private long phone;
+	
+	
+	private String email,gst_number,password;
+	
+	
+
+}
